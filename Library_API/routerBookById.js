@@ -84,10 +84,10 @@ const isValidBook = (book) => {
         title: Joi.string().required(),
         author: Joi.string().required(),
         pages: Joi.number().required(),
-        tags: Joi.array().includes(Joi.string()).required()
+        tags: Joi.array().items(Joi.string()).required()
     })
 
-    return bookSchema.validate(book) ? false : true;
+    return bookSchema.validate(book).error ? false : true;
 }
 
 module.exports = routerBookById
