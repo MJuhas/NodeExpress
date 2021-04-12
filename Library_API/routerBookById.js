@@ -64,7 +64,7 @@ routerBookById.route("/book/:id")
         }
 
         if (isValidBook(req.body)) {
-            Object.assign(library[searchId], {...req.body, "id": searchId })
+            Object.assign(library[searchId], {...req.body, "id": req.params.id })
             fs.writeFileSync('Express.json', (JSON.stringify(library)));
             res.status(200)
                 .send(library[searchId])
